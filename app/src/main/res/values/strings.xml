@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">FoodOrderingApp</string>
+    <string name="cd_item_restaurant_img">image for the restaurant</string>
+    <string name="cd_item_option_navigation">icon of navigation drawer option</string>
+    <string name="restaurant_name">restaurant_name</string>
+    <string name="ins_enter_your_email_text">Enter your email address</string>
+    <string name="Email_txt">Email</string>
+    <string name="next_step_txt">Next step</string>
+
+    <string name="facebook_app_id" translatable="false">1656130924475300</string>
+    <string name="facebook_login_btn">Login with Facebook</string>
+
+</resources>

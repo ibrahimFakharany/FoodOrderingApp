@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <string-array name="ld_activityScreenTitles">
+        <item>Restaurants</item>
+        <item>Account</item>
+        <item>Address Book</item>
+        <item>Info</item>
+    </string-array>
+
+    <array name="ld_activityScreenIcons">
+        <item>@drawable/ic_restaurant_grey600_24dp</item>
+        <item>@drawable/ic_person</item>
+        <item>@drawable/ic_location_on</item>
+        <item>@drawable/ic_info_outline</item>
+
+    </array>
+
+</resources>

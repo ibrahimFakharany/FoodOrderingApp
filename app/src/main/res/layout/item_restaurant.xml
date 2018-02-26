@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="56dp"
+    android:paddingEnd="@dimen/root_paddingEnd_item_rv"
+    android:paddingStart="@dimen/padding_start_root">
+
+    <ImageView
+        android:id="@+id/img_restaurant"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_alignParentStart="true"
+        android:src="@mipmap/ic_launcher"
+        android:contentDescription="@string/cd_item_restaurant_img"/>
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        style="@style/MyRatingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/restaurant_name"
+        android:numStars="5"
+        android:rating="3"
+        android:stepSize="1.0" />
+
+    <TextView
+        android:id="@+id/restaurant_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="29dp"
+        android:layout_toEndOf="@+id/img_restaurant"
+        android:layout_below="@id/ratingBar"
+        android:text="@string/restaurant_name"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/numOfPeople_rate"
+        android:layout_toEndOf="@id/ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>

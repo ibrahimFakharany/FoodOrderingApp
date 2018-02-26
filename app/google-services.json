@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "399098422279",
+    "firebase_url": "https://foodorderingapp-5392a.firebaseio.com",
+    "project_id": "foodorderingapp-5392a",
+    "storage_bucket": "foodorderingapp-5392a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:399098422279:android:6d223d3f62dd4bbe",
+        "android_client_info": {
+          "package_name": "exampls.com.foodorderingapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "399098422279-2718a23thb5r6tqs7d2l29dks9gjc3ed.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "exampls.com.foodorderingapp",
+            "certificate_hash": "bd7e73b6a9e407c11027670a7f1903e75b671de6"
+          }
+        },
+        {
+          "client_id": "399098422279-202vvi9qcrpl62khdvr3iesfagnppbqt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAeBnsHQluFaqAH3PGqyDdYXZmRP5kH4nI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "399098422279-202vvi9qcrpl62khdvr3iesfagnppbqt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

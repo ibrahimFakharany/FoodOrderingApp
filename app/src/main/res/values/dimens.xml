@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="item_rv_height">56dp</dimen>
+    <dimen name="root_paddingtop_item_rv">8dp</dimen>
+    <dimen name="root_paddingEnd_item_rv">16dp</dimen>
+    <dimen name="paddingstart_img_item_rv">16dp</dimen>
+    <dimen name="paddingStart_txt_item_rv">72dp</dimen>
+    <dimen name="padding_start_root">16dp</dimen>
+</resources>
