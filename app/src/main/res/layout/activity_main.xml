@@ -6,16 +6,8 @@
     android:background="@android:color/white"
     android:orientation="vertical">
 
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorPrimary" />
-    </android.support.design.widget.AppBarLayout>
+    <include
+        layout="@layout/app_bar" />
 
     <FrameLayout
         android:id="@+id/container"

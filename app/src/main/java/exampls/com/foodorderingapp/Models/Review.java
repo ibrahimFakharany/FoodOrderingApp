@@ -4,7 +4,7 @@ package exampls.com.foodorderingapp.Models;
  * Created by 450 G1 on 20/02/2018.
  */
 
-public class Review {
+public class Review  {
 
     private String date;
     private String name;

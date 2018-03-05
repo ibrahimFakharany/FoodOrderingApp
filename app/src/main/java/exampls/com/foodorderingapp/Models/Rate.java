@@ -6,7 +6,7 @@ import java.util.List;
  * Created by 450 G1 on 20/02/2018.
  */
 
-public class Rate {
+public class Rate  {
 
     private FullRate fullrate;
     private List<Review> listOfReviews;

@@ -7,19 +7,49 @@ import com.google.firebase.database.IgnoreExtraProperties;
  */
 @IgnoreExtraProperties
 public class Restaurant {
-
     private String resName;
     private String imgPath;
     private Rate rate;
     private Menu menu;
+    private int minOrder;
+    private int deliveryOrder;
+    Location location;
 
-    public Restaurant() {}
-
-    public Restaurant(String name, String imgPath, Rate rate, Menu menu) {
-        this.resName = name;
+    public Restaurant(String resName, String imgPath, Rate rate, Menu menu, int minOrder, int deliveryOrder, Location location) {
+        this.resName = resName;
         this.imgPath = imgPath;
         this.rate = rate;
         this.menu = menu;
+        this.minOrder = minOrder;
+        this.deliveryOrder = deliveryOrder;
+        this.location = location;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    public int getMinOrder() {
+        return minOrder;
+    }
+
+    public void setMinOrder(int minOrder) {
+        this.minOrder = minOrder;
+    }
+
+    public int getDeliveryOrder() {
+        return deliveryOrder;
+    }
+
+    public void setDeliveryOrder(int deliveryOrder) {
+        this.deliveryOrder = deliveryOrder;
+    }
+
+    public Restaurant() {
     }
 
     public String getName() {
@@ -37,8 +67,6 @@ public class Restaurant {
     public void setImgPath(String imgPath) {
         this.imgPath = imgPath;
     }
-
-
 
     public Rate getRate() {
         return rate;

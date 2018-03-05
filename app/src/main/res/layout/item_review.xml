@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="72dp"
+    android:paddingTop="4dp"
+    android:paddingBottom="4dp"
+   android:paddingStart="16dp"
+    android:paddingEnd="16dp">
+
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:textColor="#000"
+        android:gravity="end"
+        android:text="22/12/2015"
+        android:layout_alignParentTop="true"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@id/date"
+        android:layout_below="@id/date"
+        android:layout_marginTop="4dp"
+        android:text="name"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/review"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@id/date"
+        android:layout_below="@id/name"
+        android:layout_marginTop="4dp"
+        android:text="daffafd"
+        android:textColor="#000"
+        android:textSize="16sp" />
+    <TextView
+        android:id="@+id/rate"
+        android:textSize="22sp"
+        android:gravity="bottom"
+        android:layout_alignParentEnd="true"
+        android:textColor="#000"
+        android:text="4.3"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent" />
+</RelativeLayout>

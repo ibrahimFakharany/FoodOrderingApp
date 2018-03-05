@@ -7,7 +7,19 @@
     <string name="Email_txt">Email</string>
     <string name="next_step_txt">Next step</string>
 
-    <string name="facebook_app_id" translatable="false">1656130924475300</string>
-    <string name="facebook_login_btn">Login with Facebook</string>
+    <string name="google_maps_key">AIzaSyB4pb-Wg81dSaTY19J-wPyhvGPWkelrVNs</string>
+    <string name="web_client_id">399098422279-202vvi9qcrpl62khdvr3iesfagnppbqt.apps.googleusercontent.com</string>
+    <string name="or_txt">OR</string>
+    <string name="min_txt">Min. Order</string>
+    <string name="delivery_fee_txt">Delivery fee</string>
+    <string name="start_bracket">(</string>
+    <string name="end_bracket">)</string>
 
+    <string name="egypt" translatable="false">EGP </string>
+    <string name="basic_price">Basic Price</string>
+    <string name="quantity">Quantity</string>
+    <string name="total">Total</string>
+    <string name="add_to_basket">Add to Basket</string>
+    <string name="info_icon">info</string>
+    <string name="rating">Rating</string>
 </resources>

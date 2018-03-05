@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_restaurant_relative"
     android:layout_width="match_parent"
-    android:layout_height="56dp"
+    android:layout_height="60dp"
     android:paddingEnd="@dimen/root_paddingEnd_item_rv"
-    android:paddingStart="@dimen/padding_start_root">
+    android:paddingStart="16dp">
 
     <ImageView
         android:id="@+id/img_restaurant"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
+        android:layout_width="@dimen/width_img_res"
+        android:layout_height="@dimen/height_img_res"
         android:layout_alignParentStart="true"
-        android:src="@mipmap/ic_launcher"
-        android:contentDescription="@string/cd_item_restaurant_img"/>
+        android:contentDescription="@string/cd_item_restaurant_img"
+        android:src="@mipmap/ic_launcher" />
 
     <RatingBar
         android:id="@+id/ratingBar"
@@ -29,16 +30,16 @@
         android:id="@+id/restaurant_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/ratingBar"
         android:layout_marginStart="29dp"
         android:layout_toEndOf="@+id/img_restaurant"
-        android:layout_below="@id/ratingBar"
         android:text="@string/restaurant_name"
-        android:textSize="22sp" />
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/numOfPeople_rate"
-        android:layout_toEndOf="@id/ratingBar"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/ratingBar" />
 
 </RelativeLayout>

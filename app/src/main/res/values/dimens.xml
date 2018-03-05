@@ -5,5 +5,12 @@
     <dimen name="root_paddingEnd_item_rv">16dp</dimen>
     <dimen name="paddingstart_img_item_rv">16dp</dimen>
     <dimen name="paddingStart_txt_item_rv">72dp</dimen>
-    <dimen name="padding_start_root">16dp</dimen>
+    <!--<dimen name="padding_start_root">16dp</dimen>-->
+    <dimen name="redius_button">5dp</dimen>
+    <dimen name="width_img_res">56dp</dimen>
+    <dimen name="height_img_res">56dp</dimen>
+    <dimen name="min_delivery_txt_size">11sp</dimen>
+    <dimen name="min_delivery_value_size">13sp</dimen>
+    <dimen name="activity_horizontal_margin">4dp</dimen>
+    <dimen name="toolbar_height">56dp</dimen>
 </resources>
