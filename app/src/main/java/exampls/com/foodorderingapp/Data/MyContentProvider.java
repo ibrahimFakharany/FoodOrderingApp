@@ -1,6 +1,7 @@
 package exampls.com.foodorderingapp.Data;
 
 import android.content.ContentProvider;
+import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -52,8 +53,11 @@ public class MyContentProvider extends ContentProvider {
     public Uri insert(@NonNull Uri uri, @Nullable final ContentValues contentValues) {
         SQLiteDatabase db = database.getWritableDatabase();
 
-        return null;
 
+
+        long i  = db.insert(DatabaseContract.TableRestaurantColumns.TABLE_NAME, null, contentValues);
+        getContext().getContentResolver().notifyChange(uri, null);
+        return ContentUris.withAppendedId(DatabaseContract.CONTENT_URI, i);
     }
 
     @Override

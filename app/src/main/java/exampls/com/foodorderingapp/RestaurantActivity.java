@@ -8,7 +8,6 @@ import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -110,7 +109,6 @@ public class RestaurantActivity extends AppCompatActivity implements RestaurantF
         bundle.putInt(Constants.CATEGORY_ID, categoryId);
         bundle.putInt(Constants.MEAL_ID, mealPosition);
         if (twoPane) {
-            Toast.makeText(this, "two pane not implemented yes", Toast.LENGTH_SHORT).show();
 
             // TODO: IMPLEMENT TWO PANE
 

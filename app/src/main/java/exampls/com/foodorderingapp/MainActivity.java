@@ -34,8 +34,10 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
         list.setLayoutManager(new LinearLayoutManager(this));
         list.setAdapter(adapter);
         Fragment selectedScreen = null;
-        selectedScreen = new RestaurantsFragment();
-        showFragment(selectedScreen);
+        if (savedInstanceState == null) {
+            selectedScreen = new RestaurantsFragment();
+            showFragment(selectedScreen);
+        }
     }
 
     @Override
@@ -60,8 +62,11 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
     }
 
     private void showFragment(Fragment fragment) {
-        getFragmentManager().beginTransaction()
-                .replace(R.id.container, fragment)
-                .commit();
+        if (fragment != null) {
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.container, fragment)
+                    .commit();
+        }
+
     }
 }

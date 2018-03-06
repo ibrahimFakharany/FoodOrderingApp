@@ -1,6 +1,7 @@
 package exampls.com.foodorderingapp.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -18,6 +19,7 @@ import exampls.com.foodorderingapp.R;
 import exampls.com.foodorderingapp.Realm.RateTable;
 import exampls.com.foodorderingapp.Realm.RestaurantTable;
 import exampls.com.foodorderingapp.Utils.Constants;
+import exampls.com.foodorderingapp.Utils.MyService;
 import io.realm.Realm;
 
 /**
@@ -69,6 +71,8 @@ public class RestaurantFragment extends android.support.v4.app.Fragment implemen
             RestaurantTable restaurantTable = realm.where(RestaurantTable.class).equalTo("resId", resId).findFirst();
             if (restaurantTable != null) {
 
+                updateWidgetTable(restaurantTable.getResName());
+
                 restaurantPosition = resId;
                 String nameRes = restaurantTable.getResName();
                 RateTable rateTable = restaurantTable.getRate();
@@ -108,6 +112,12 @@ public class RestaurantFragment extends android.support.v4.app.Fragment implemen
                         .commit();
             }
         }
+    }
+
+    private void updateWidgetTable(String resName) {
+        Intent intent = new Intent(getActivity(), MyService.class);
+        intent.putExtra("name", resName);
+        context.startService(intent);
     }
 
     public interface RestaurantFragmentListener {

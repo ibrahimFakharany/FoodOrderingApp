@@ -4,6 +4,7 @@ package exampls.com.foodorderingapp.fragment;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,7 +17,6 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.squareup.picasso.Picasso;
@@ -52,6 +52,21 @@ import io.realm.RealmList;
  * Created by 450 G1 on 20/02/2018.
  */
 
+class MyAsynctask extends AsyncTask<Void, Void,Void>{
+
+    public MyAsynctask() {
+
+    }
+
+    @Override
+    protected Void doInBackground(Void... voids) {
+        return null;
+    }
+
+    @Override
+    protected void onPostExecute(Void aVoid) {
+    }
+}
 
 class RestaurantsAdapter extends RecyclerView.Adapter<RestaurantsAdapter.MyViewHolder> {
     Context context;
@@ -252,6 +267,8 @@ public class RestaurantsFragment extends Fragment implements NetworkCalls.MyList
 
             // save in database
             savedRestaurants(restaurants);
+
+
             Log.e(TAG, "after saveing data ");
             // load in views
             RestaurantsAdapter restaurantsAdapter = new RestaurantsAdapter(context, restaurants);
@@ -261,18 +278,7 @@ public class RestaurantsFragment extends Fragment implements NetworkCalls.MyList
 
         }
     }
-    public boolean onOptionsItemSelected(android.view.MenuItem item) {
 
-        switch (item.getItemId()) {
-
-            case R.id.info:
-                // inflate fragment info
-                Toast.makeText(getActivity(), "my toast", Toast.LENGTH_SHORT).show();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
     private void savedRestaurants(List<Restaurant> restaurants) {
         Log.e(TAG, "save to data base");
         Realm.init(context.getApplicationContext());
@@ -285,7 +291,7 @@ public class RestaurantsFragment extends Fragment implements NetworkCalls.MyList
             restaurantTable = new RestaurantTable();
             restaurantTable.setResId(i);
             Log.e(TAG, "i >> "+i+"");
-
+            i++;
             String restaurantName = restaurant.getName();
             String imgPath = restaurant.getImgPath();
             restaurantTable.setResName(restaurantName);
@@ -345,7 +351,6 @@ public class RestaurantsFragment extends Fragment implements NetworkCalls.MyList
         }
 
     }
-
     @Override
     public void onRestaurantClick(int resId) {
         Intent intent = new Intent(getActivity(), RestaurantActivity.class);

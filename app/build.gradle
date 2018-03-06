@@ -1,6 +1,14 @@
 apply plugin: 'com.android.application'
 apply plugin: 'realm-android'
 android {
+    signingConfigs {
+        config {
+            keyAlias 'keyAlias'
+            keyPassword '3311168h'
+            storeFile file("$rootDir/myKeyStore.jks")
+            storePassword '3311168h'
+        }
+    }
     compileSdkVersion 27
     defaultConfig {
         applicationId "exampls.com.foodorderingapp"
@@ -14,14 +22,13 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
         }
     }
-
-
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "com.android.support:appcompat-v7:$supportLibVersion"
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     testImplementation 'junit:junit:4.12'
