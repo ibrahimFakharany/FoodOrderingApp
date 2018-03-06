@@ -4,7 +4,6 @@ package exampls.com.foodorderingapp.fragment;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -51,22 +50,6 @@ import io.realm.RealmList;
 /**
  * Created by 450 G1 on 20/02/2018.
  */
-
-class MyAsynctask extends AsyncTask<Void, Void,Void>{
-
-    public MyAsynctask() {
-
-    }
-
-    @Override
-    protected Void doInBackground(Void... voids) {
-        return null;
-    }
-
-    @Override
-    protected void onPostExecute(Void aVoid) {
-    }
-}
 
 class RestaurantsAdapter extends RecyclerView.Adapter<RestaurantsAdapter.MyViewHolder> {
     Context context;

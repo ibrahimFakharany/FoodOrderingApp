@@ -90,26 +90,37 @@ public class RestaurantFragment extends android.support.v4.app.Fragment implemen
                 ratingBarView.setRating(rateTable.getFullrate().getRate());
 
                 numOfPeopleView = view.findViewById(R.id.numOfPeople_rate);
-                numOfPeopleView.setText("("+Integer.toString(rateTable.getFullrate().getNumOfPeople())+")");
+                numOfPeopleView.setText("(" + Integer.toString(rateTable.getFullrate().getNumOfPeople()) + ")");
 
                 minOrderValueView = view.findViewById(R.id.min_value);
-                minOrderValueView.setText(getString(R.string.egypt)+" "+Integer.toString(minOrder));
+                minOrderValueView.setText(getString(R.string.egypt) + " " + Integer.toString(minOrder));
 
                 deliveryFeeValueView = view.findViewById(R.id.delivery_value);
-                deliveryFeeValueView.setText(getString(R.string.egypt)+" "+Integer.toString(deliveryFee));
+                deliveryFeeValueView.setText(getString(R.string.egypt) + " " + Integer.toString(deliveryFee));
 
                 // inflate categories fragment
+                if (savedInstanceState == null) {
+                    Log.e(TAG, "saved instance is null");
+                    CategoriesFragment categoriesFragment = new CategoriesFragment();
+                    categoriesFragment.setListener(this);
+                    categoriesFragment.setArguments(bundle);
 
-                CategoriesFragment categoriesFragment = new CategoriesFragment();
-                categoriesFragment.setListener(this);
-                categoriesFragment.setArguments(bundle);
+                    InfoFragment infoFragment = new InfoFragment();
+                    infoFragment.setArguments(bundle);
+                    android.support.v4.app.FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                    ft.replace(R.id.frame_categories_info, categoriesFragment, Constants.CATEGORY_ID)
+                            .commit();
+                } else {
+                    CategoriesFragment categoriesFragment = (CategoriesFragment) getActivity().getSupportFragmentManager().findFragmentByTag(Constants.CATEGORY_ID);
+
+                    if (categoriesFragment != null) {
+                        categoriesFragment.setListener(this);
+
+                    }
+
+                }
 
 
-                InfoFragment infoFragment = new InfoFragment();
-                infoFragment.setArguments(bundle);
-                android.support.v4.app.FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-                ft.replace(R.id.frame_categories_info, categoriesFragment , Constants.RESTAURANT_FRAGMENT_TAG)
-                        .commit();
             }
         }
     }
@@ -127,11 +138,11 @@ public class RestaurantFragment extends android.support.v4.app.Fragment implemen
     @Override
     public void onCategoryClick(int position) {
         // send it to activity
-        if(restaurantPosition != -1){
+        if (restaurantPosition != -1) {
 
             listener.onCategoryClick(restaurantPosition, position);
 
-        }else {
+        } else {
 
             Log.e(TAG, "no restaurant selected");
         }

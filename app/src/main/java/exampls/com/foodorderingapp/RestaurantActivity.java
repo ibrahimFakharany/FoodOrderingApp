@@ -40,10 +40,17 @@ public class RestaurantActivity extends AppCompatActivity implements RestaurantF
                 }
                 InfoFragment infoFragment = new InfoFragment();
                 infoFragment.setArguments(getIntent().getExtras());
-                android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                ft.replace(R.id.frame_categories_info, infoFragment, Constants.RESTAURANT_RATING)
-                        .addToBackStack(Constants.RESTAURANT_RATING)
-                        .commit();
+
+                if(findViewById(R.id.frame_categories_info)!=null){
+
+                    android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                    ft.replace(R.id.frame_categories_info, infoFragment, Constants.RESTAURANT_RATING)
+                            .addToBackStack(Constants.RESTAURANT_RATING)
+                            .commit();
+
+                }
+
+
 
                 return true;
             default:
