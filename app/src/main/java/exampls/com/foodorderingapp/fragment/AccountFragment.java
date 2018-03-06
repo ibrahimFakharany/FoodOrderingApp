@@ -25,9 +25,7 @@ import com.google.firebase.auth.GoogleAuthProvider;
 
 import exampls.com.foodorderingapp.R;
 
-/**
- * Created by 450 G1 on 24/02/2018.
- */
+
 
 public class AccountFragment extends Fragment implements EmailAccountFragment.EmailAccountFragmentListener {
 
@@ -138,9 +136,8 @@ public class AccountFragment extends Fragment implements EmailAccountFragment.Em
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task != null) {
                     FirebaseUser user = mAuth.getCurrentUser();
-                    Log.e(TAG, "EMAIL IN ONCOMPLETE " + user.getEmail());
+
                 } else {
-                    Log.e(TAG, "in onComplete task is null");
                 }
             }
         });

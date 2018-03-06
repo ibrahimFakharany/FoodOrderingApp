@@ -3,58 +3,41 @@ package exampls.com.foodorderingapp;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
+import android.database.Cursor;
+import android.util.Log;
 import android.widget.RemoteViews;
 
-import java.util.List;
-
-import exampls.com.foodorderingapp.Realm.WidgetTable;
-import io.realm.Realm;
-import io.realm.RealmResults;
+import exampls.com.foodorderingapp.Data.DatabaseContract;
 
 /**
  * Created by 450 G1 on 06/03/2018.
  */
 
 public class MyWidgeProvider extends AppWidgetProvider {
-    static RealmResults<WidgetTable> results;
-    static List<WidgetTable> recipesArray;
-    static Realm realm;
-    public static  RemoteViews getRecipesListView(Context context){
+
+    private RemoteViews updateMyWidget(Context context, int appWidgetId) {
+
         final RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.my_widge_provider);
+        Log.e("widget", "update my Widget");
         // getting from database
-
-        realm.init(context);
-        realm = Realm.getDefaultInstance();
-        results = realm.where(WidgetTable.class).findAll();
-
-        if(results.size() == 0){
-            views.setTextViewText(R.id.name_widget, "please select recipe from the app");
-            return views;
+        String[] projections = new String[]{DatabaseContract.TableRestaurantColumns._ID, DatabaseContract.TableRestaurantColumns.resName};
+        String name = null;
+        Cursor cr = context.getContentResolver().query(DatabaseContract.CONTENT_URI, projections, null, null, null);
+        if (cr.getCount() > 0) {
+            cr.moveToFirst();
+            name = cr.getString(cr.getColumnIndex(DatabaseContract.TableRestaurantColumns.resName));
         }
 
-        recipesArray = realm.copyFromRealm(results);
-        realm.close();
-
-        WidgetTable widgetTable = recipesArray.get(0);
+        Log.e("widget", "cursor size "+ cr.getCount());
 
         // update widget view
-        views.setTextViewText(R.id.name_widget,widgetTable.getName());
-        /*views.setTextViewText(R.id.ingredients_widget, widgetTable.getIngredients());
-        Intent intent = new Intent(context, StepsActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putInt(RecipesActivity.RECIPE_KEY, widgetTable.getId());
-        intent.putExtras(bundle);
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent,0);
-        views.setOnClickPendingIntent(R.id.relative_widget, pendingIntent);*/
-        return views;
+        views.setTextViewText(R.id.name_widget, name);
 
+        return views;
     }
+
     static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
                                 int appWidgetId) {
-        // Construct the RemoteViews object
-        RemoteViews views = getRecipesListView(context.getApplicationContext());
-        // Instruct the widget manager to update the widget
-        appWidgetManager.updateAppWidget(appWidgetId, views);
     }
 
     @Override
@@ -63,6 +46,13 @@ public class MyWidgeProvider extends AppWidgetProvider {
         for (int appWidgetId : appWidgetIds) {
             updateAppWidget(context, appWidgetManager, appWidgetId);
         }
+        final int N = appWidgetIds.length;
+        for (int i = 0; i < N; ++i) {
+            RemoteViews remoteViews = updateMyWidget(context,
+                    appWidgetIds[i]);
+            appWidgetManager.updateAppWidget(appWidgetIds[i], remoteViews);
+        }
+        super.onUpdate(context, appWidgetManager, appWidgetIds);
     }
 
     @Override

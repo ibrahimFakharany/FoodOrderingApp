@@ -18,7 +18,8 @@
             android:layout_height="300dp"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_person"
-            app:layout_collapseMode="parallax" />
+            app:layout_collapseMode="parallax"
+            android:contentDescription="@string/backdrop_cd"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -35,7 +36,7 @@
                 android:fontFamily="@font/abeezee_regular"
                 android:paddingBottom="16dp"
                 android:paddingTop="16dp"
-                android:text="meal name"
+                android:text="@string/meal_name"
                 android:textColor="@android:color/black"
                 android:textSize="22sp"
                 android:textStyle="bold" />
@@ -45,7 +46,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/abeezee_regular"
-                android:text="this is description"
+                android:text="@string/meal_description_text"
                 android:textSize="16sp" />
 
             <LinearLayout
@@ -75,7 +76,7 @@
                     android:gravity="end"
                     android:paddingBottom="16dp"
                     android:paddingTop="16dp"
-                    android:text="Price"
+                    android:text="@string/price_text"
                     android:textSize="16sp" />
 
             </LinearLayout>
@@ -111,6 +112,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="#fff"
+                    android:contentDescription="@string/img_minus_cd"
                     android:src="@drawable/minus_circular_button" />
 
                 <TextView
@@ -120,7 +122,7 @@
                     android:fontFamily="@font/abeezee_regular"
                     android:gravity="center"
                     android:numeric="integer"
-                    android:text="1"
+                    android:text="@string/one_number"
                     android:textSize="18sp" />
 
                 <ImageButton
@@ -128,6 +130,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:contentDescription="@string/img_add_cd"
                     android:background="#fff"
                     android:src="@drawable/add_circular_button" />
 
@@ -160,7 +163,7 @@
                     android:layout_weight="1"
                     android:fontFamily="@font/abeezee_regular"
                     android:gravity="end"
-                    android:text="EGP 20"
+                    android:text="@string/text_money"
                     android:textColor="#000"
                     android:textSize="18sp"
                     android:textStyle="bold" />

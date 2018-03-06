@@ -33,19 +33,9 @@ import exampls.com.foodorderingapp.Models.Restaurant;
 import exampls.com.foodorderingapp.Models.Review;
 import exampls.com.foodorderingapp.Models.SubCategory;
 import exampls.com.foodorderingapp.R;
-import exampls.com.foodorderingapp.Realm.FullRateTable;
-import exampls.com.foodorderingapp.Realm.LocationTable;
-import exampls.com.foodorderingapp.Realm.MenuItemTable;
-import exampls.com.foodorderingapp.Realm.MenuTable;
-import exampls.com.foodorderingapp.Realm.RateTable;
-import exampls.com.foodorderingapp.Realm.RestaurantTable;
-import exampls.com.foodorderingapp.Realm.ReviewTable;
-import exampls.com.foodorderingapp.Realm.SubCategoryTable;
 import exampls.com.foodorderingapp.RestaurantActivity;
 import exampls.com.foodorderingapp.Utils.Constants;
 import exampls.com.foodorderingapp.Utils.NetworkCalls;
-import io.realm.Realm;
-import io.realm.RealmList;
 
 /**
  * Created by 450 G1 on 20/02/2018.
@@ -244,12 +234,11 @@ public class RestaurantsFragment extends Fragment implements NetworkCalls.MyList
             Restaurant restaurant = new Restaurant(resName, imgPath, rateObj, menuObj, minOrder, deliveryfee, location);
             restaurants.add(restaurant);
             i++;
-            Log.e(TAG, "************* Restaurant **************");
         }
         if (restaurants != null) {
 
             // save in database
-            savedRestaurants(restaurants);
+           // savedRestaurants(restaurants);
 
 
             Log.e(TAG, "after saveing data ");
@@ -262,7 +251,7 @@ public class RestaurantsFragment extends Fragment implements NetworkCalls.MyList
         }
     }
 
-    private void savedRestaurants(List<Restaurant> restaurants) {
+    /*private void savedRestaurants(List<Restaurant> restaurants) {
         Log.e(TAG, "save to data base");
         Realm.init(context.getApplicationContext());
         Realm realm = Realm.getDefaultInstance();
@@ -333,7 +322,7 @@ public class RestaurantsFragment extends Fragment implements NetworkCalls.MyList
 
         }
 
-    }
+    }*/
     @Override
     public void onRestaurantClick(int resId) {
         Intent intent = new Intent(getActivity(), RestaurantActivity.class);

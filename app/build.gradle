@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-apply plugin: 'realm-android'
+//apply plugin: 'realm-android'
 android {
     signingConfigs {
         config {
@@ -42,8 +42,8 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.5.2'
     implementation 'com.google.firebase:firebase-auth:11.8.0'
     implementation 'com.google.android.gms:play-services-auth:11.8.0'
-    annotationProcessor 'com.google.auto.value:auto-value:1.1'
+   // annotationProcessor 'com.google.auto.value:auto-value:1.1'
     compile 'com.google.android.gms:play-services-maps:11.8.0'
-    compile 'io.realm:android-adapters:2.0.0'
+    //compile 'io.realm:android-adapters:2.0.0'
 }
 apply plugin: 'com.google.gms.google-services'

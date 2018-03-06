@@ -12,7 +12,8 @@
         android:id="@+id/img_meal"
         android:layout_width="56dp"
         android:layout_height="56dp"
-        android:src="@mipmap/ic_launcher" />
+        android:src="@mipmap/ic_launcher"
+        android:contentDescription="@string/cd_img_meal" />
 
     <TextView
         android:id="@+id/name_meal"
@@ -25,7 +26,7 @@
         android:fontFamily="@font/abeezee_regular"
         android:gravity="top"
         android:padding="0dp"
-        android:text="meal name"
+        android:text="@string/meal_name"
         android:textSize="20sp"
         android:paddingEnd="18dp"
         android:textStyle="bold" />
@@ -39,7 +40,7 @@
         android:fontFamily="@font/abeezee_regular"
         android:layout_alignParentBottom="true"
 
-        android:text="EGP 20"
+        android:text="@string/text_money"
         android:textSize="14sp" />
 
     <LinearLayout
@@ -53,10 +54,10 @@
         <ImageView
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:layout_alignParentEnd="true"
             android:layout_gravity="center_vertical"
             android:foregroundGravity="center"
-            android:src="@mipmap/right_arrow_fore" />
+            android:src="@mipmap/right_arrow_fore"
+            android:contentDescription="@string/cd_image_arrow_right" />
 
     </LinearLayout>
 </RelativeLayout>

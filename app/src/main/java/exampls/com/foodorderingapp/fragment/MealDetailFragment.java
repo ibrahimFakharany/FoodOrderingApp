@@ -14,27 +14,28 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import exampls.com.foodorderingapp.Models.Menu;
+import exampls.com.foodorderingapp.Models.MenuItem;
+import exampls.com.foodorderingapp.Models.Restaurant;
+import exampls.com.foodorderingapp.Models.SubCategory;
 import exampls.com.foodorderingapp.R;
-import exampls.com.foodorderingapp.Realm.MenuItemTable;
-import exampls.com.foodorderingapp.Realm.MenuTable;
-import exampls.com.foodorderingapp.Realm.RestaurantTable;
-import exampls.com.foodorderingapp.Realm.SubCategoryTable;
 import exampls.com.foodorderingapp.Utils.Constants;
-import io.realm.Realm;
-import io.realm.RealmList;
+import exampls.com.foodorderingapp.Utils.NetworkCalls;
+
 
 /**
  * Created by 450 G1 on 02/03/2018.
  */
 
-public class MealDetailFragment extends Fragment {
+public class MealDetailFragment extends Fragment implements NetworkCalls.MyRestaurantListener {
     private static final String TAG = "Mealdetailfragment";
     Context context;
     ImageView imgMealView;
     TextView nameMealView;
     TextView basicPriceMealView;
     TextView descriptionView;
-
+    int catId = -1;
+    int mealId = -1;
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -47,6 +48,7 @@ public class MealDetailFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_meal_detail, container, false);
     }
+    View view;
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -54,25 +56,31 @@ public class MealDetailFragment extends Fragment {
 
         Bundle bundle  =getArguments();
         int resId = bundle.getInt(Constants.RES_ID);
-        int catId = bundle.getInt(Constants.CATEGORY_ID);
-        int mealId = bundle.getInt(Constants.MEAL_ID);
+         catId = bundle.getInt(Constants.CATEGORY_ID);
+         mealId = bundle.getInt(Constants.MEAL_ID);
 
-        Realm.init(context.getApplicationContext());
-        Realm realm = Realm.getDefaultInstance();
-        RestaurantTable restaurantTable = realm.where(RestaurantTable.class).equalTo("resId", resId).findFirst();
+        this.view = view;
+        NetworkCalls networkCalls = new NetworkCalls();
+        networkCalls.setMyRestaurantListener(this);
+        networkCalls.findRestaurantsImgAndName(resId);
 
-        if (restaurantTable != null) {
-            MenuTable menuTable = restaurantTable.getMenu();
+
+    }
+
+    @Override
+    public void onFinish(Restaurant restaurant) {
+        if (restaurant != null) {
+            Menu menuTable = restaurant.getMenu();
 
             if (menuTable != null) {
-                RealmList<MenuItemTable> list = menuTable.getMenuItems();
+                List<MenuItem> list = menuTable.getMenuItems();
 
                 if (list != null) {
-                    List<SubCategoryTable> subCategoryTableList = list.get(catId).getSubCategories();
+                    List<SubCategory> subCategoryTableList = list.get(catId).getSubCategories();
 
                     if (subCategoryTableList != null) {
 
-                        SubCategoryTable subCategoryTable = subCategoryTableList.get(mealId);
+                        SubCategory subCategoryTable = subCategoryTableList.get(mealId);
                         String name = subCategoryTable.getName();
                         String basicPrice = subCategoryTable.getBasicPrice();
                         String description = subCategoryTable.getDescription();

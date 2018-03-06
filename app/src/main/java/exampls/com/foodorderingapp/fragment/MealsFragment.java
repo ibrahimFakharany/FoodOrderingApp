@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,26 +17,57 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import exampls.com.foodorderingapp.Models.Menu;
+import exampls.com.foodorderingapp.Models.MenuItem;
+import exampls.com.foodorderingapp.Models.Restaurant;
+import exampls.com.foodorderingapp.Models.SubCategory;
 import exampls.com.foodorderingapp.R;
-import exampls.com.foodorderingapp.Realm.MenuItemTable;
-import exampls.com.foodorderingapp.Realm.MenuTable;
-import exampls.com.foodorderingapp.Realm.RestaurantTable;
-import exampls.com.foodorderingapp.Realm.SubCategoryTable;
 import exampls.com.foodorderingapp.Utils.Constants;
-import io.realm.Realm;
-import io.realm.RealmList;
+import exampls.com.foodorderingapp.Utils.NetworkCalls;
 
 /**
  * Created by 450 G1 on 02/03/2018.
  */
 
-public class MealsFragment extends android.support.v4.app.Fragment implements MealsAdapter.MealsAdapterListener {
+public class MealsFragment extends android.support.v4.app.Fragment implements MealsAdapter.MealsAdapterListener, NetworkCalls.MyRestaurantListener {
     Context context;
     MealsListener listener;
+    int categoryId;
+    View view = null;
+    String TAG = "mealsfragment";
 
     @Override
     public void onMealClick(int mealPositino) {
         listener.onMealClick(mealPositino);
+    }
+
+    @Override
+    public void onFinish(Restaurant restaurant) {
+        Log.e(TAG, "onFinish in meal fragment ");
+
+        if (restaurant != null) {
+            Menu menuTable = restaurant.getMenu();
+
+            if (menuTable != null) {
+                List<MenuItem> list = menuTable.getMenuItems();
+
+                if (list != null) {
+                    List<SubCategory> subCategoryTableList = list.get(categoryId).getSubCategories();
+
+                    if (subCategoryTableList != null) {
+
+                        MealsAdapter mealsAdapter = new MealsAdapter(context, subCategoryTableList);
+                        mealsAdapter.setListener(this);
+                        RecyclerView mealsRv = view.findViewById(R.id.meals_rv);
+                        mealsRv.setLayoutManager(new LinearLayoutManager(getActivity()));
+                        mealsRv.setAdapter(mealsAdapter);
+
+                    }
+                }
+            }
+
+        }
+
     }
 
     public interface MealsListener {
@@ -62,38 +94,19 @@ public class MealsFragment extends android.support.v4.app.Fragment implements Me
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        Log.e(TAG, "onViewCreated");
         Bundle bundle = getArguments();
-
+        this.view = view;
         if (bundle != null) {
+
             int resId = bundle.getInt(Constants.RES_ID);
-            int categoryId = bundle.getInt(Constants.CATEGORY_ID);
+            categoryId = bundle.getInt(Constants.CATEGORY_ID);
+            Log.e(TAG, "bundle is not null and the resId is "+ resId +" catId "+categoryId );
 
+            NetworkCalls networkCalls = new NetworkCalls();
+            networkCalls.setMyRestaurantListener(this);
+            networkCalls.findRestaurantsImgAndName(resId);
 
-            Realm.init(context.getApplicationContext());
-            Realm realm = Realm.getDefaultInstance();
-            RestaurantTable restaurantTable = realm.where(RestaurantTable.class).equalTo("resId", resId).findFirst();
-            if (restaurantTable != null) {
-                MenuTable menuTable = restaurantTable.getMenu();
-
-                if (menuTable != null) {
-                    RealmList<MenuItemTable> list = menuTable.getMenuItems();
-
-                    if (list != null) {
-                        List<SubCategoryTable> subCategoryTableList = list.get(categoryId).getSubCategories();
-
-                        if (subCategoryTableList != null) {
-
-                            MealsAdapter mealsAdapter = new MealsAdapter(context, subCategoryTableList);
-                            mealsAdapter.setListener(this);
-                            RecyclerView mealsRv = view.findViewById(R.id.meals_rv);
-                            mealsRv.setLayoutManager(new LinearLayoutManager(getActivity()));
-                            mealsRv.setAdapter(mealsAdapter);
-
-                        }
-                    }
-                }
-            }
         }
 
 
@@ -103,9 +116,9 @@ public class MealsFragment extends android.support.v4.app.Fragment implements Me
 class MealsAdapter extends RecyclerView.Adapter<MealsAdapter.MyViewHolder> {
     Context context;
     LayoutInflater inflater;
-    List<SubCategoryTable> list;
+    List<SubCategory> list;
 
-    public MealsAdapter(Context context, List<SubCategoryTable> list) {
+    public MealsAdapter(Context context, List<SubCategory> list) {
 
         this.context = context;
         inflater = LayoutInflater.from(context);
@@ -135,7 +148,7 @@ class MealsAdapter extends RecyclerView.Adapter<MealsAdapter.MyViewHolder> {
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
-        SubCategoryTable subCategoryTable = list.get(position);
+        SubCategory subCategoryTable = list.get(position);
         String name = subCategoryTable.getName();
         String imgPath = subCategoryTable.getImgPath();
         String basicPrice = subCategoryTable.getBasicPrice();

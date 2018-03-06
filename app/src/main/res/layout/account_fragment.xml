@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <Button
-        android:text="sign in with google"
+        android:text="@string/sign_in_with_google_btn"
         android:id="@+id/google_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />

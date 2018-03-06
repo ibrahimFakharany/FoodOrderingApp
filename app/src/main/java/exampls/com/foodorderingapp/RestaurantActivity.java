@@ -41,10 +41,10 @@ public class RestaurantActivity extends AppCompatActivity implements RestaurantF
                 InfoFragment infoFragment = new InfoFragment();
                 infoFragment.setArguments(getIntent().getExtras());
 
-                if(findViewById(R.id.frame_categories_info)!=null){
+                if(findViewById(R.id.restaurant_frame)!=null){
 
                     android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                    ft.replace(R.id.frame_categories_info, infoFragment, Constants.RESTAURANT_RATING)
+                    ft.replace(R.id.restaurant_frame, infoFragment, Constants.RESTAURANT_RATING)
                             .addToBackStack(Constants.RESTAURANT_RATING)
                             .commit();
 
@@ -74,12 +74,6 @@ public class RestaurantActivity extends AppCompatActivity implements RestaurantF
             android.support.v4.app.FragmentTransaction ft1 = getSupportFragmentManager().beginTransaction();
             ft1.replace(R.id.restaurant_frame, restaurantFragment, Constants.RESTAURANT_FRAGMENT_TAG)
                     .commit();
-
-        }
-
-        if (findViewById(R.id.meals_Frame) != null) {
-
-            twoPane = true;
 
         }
     }

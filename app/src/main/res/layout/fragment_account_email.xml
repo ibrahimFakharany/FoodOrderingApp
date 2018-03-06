@@ -86,7 +86,7 @@
         android:layout_below="@id/chk_email_btn"
         android:gravity="center"
 
-        android:text = "email here"
+        android:text = "@string/email_here"
         android:textSize="24sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

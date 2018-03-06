@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <TextView
-        android:text="account detail fragment"
+        android:text="@string/account_detail_fragment_text"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </RelativeLayout>

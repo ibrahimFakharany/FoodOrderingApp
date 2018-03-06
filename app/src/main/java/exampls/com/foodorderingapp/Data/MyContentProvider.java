@@ -36,9 +36,19 @@ public class MyContentProvider extends ContentProvider {
 
     @Nullable
     @Override
-    public Cursor query(@NonNull Uri uri, @Nullable String[] strings, @Nullable String s, @Nullable String[] strings1, @Nullable String s1) {
+    public Cursor query(@NonNull Uri uri, @Nullable String[] projection, @Nullable String selection, @Nullable String[] selectionArgs, @Nullable String sortOrder) {
+        SQLiteDatabase db = database.getReadableDatabase();
 
-           return null;
+        Cursor cursor = db.query(
+                DatabaseContract.TableRestaurantColumns.TABLE_NAME
+                , projection
+                , selection
+                , selectionArgs
+                , null
+                , null
+                , sortOrder);
+
+        return cursor;
     }
 
     @Nullable
@@ -54,8 +64,7 @@ public class MyContentProvider extends ContentProvider {
         SQLiteDatabase db = database.getWritableDatabase();
 
 
-
-        long i  = db.insert(DatabaseContract.TableRestaurantColumns.TABLE_NAME, null, contentValues);
+        long i = db.insert(DatabaseContract.TableRestaurantColumns.TABLE_NAME, null, contentValues);
         getContext().getContentResolver().notifyChange(uri, null);
         return ContentUris.withAppendedId(DatabaseContract.CONTENT_URI, i);
     }
@@ -67,8 +76,13 @@ public class MyContentProvider extends ContentProvider {
     }
 
     @Override
-    public int update(@NonNull Uri uri, @Nullable ContentValues contentValues, @Nullable String s, @Nullable String[] strings) {
+    public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
+        int count = 0;
+        SQLiteDatabase db  =  database.getWritableDatabase();
+        count = db.update(DatabaseContract.TableRestaurantColumns.TABLE_NAME, values, DatabaseContract.TableRestaurantColumns._ID +
+                " = " +  1 , selectionArgs);
 
-        return 0;
+        getContext().getContentResolver().notifyChange(uri, null);
+        return count;
     }
 }

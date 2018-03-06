@@ -16,7 +16,8 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_marginStart="16dp"
-            android:src="@mipmap/ic_launcher" />
+            android:src="@mipmap/ic_launcher"
+            android:contentDescription="@string/cd_img_res"/>
 
 
         <TextView
@@ -26,8 +27,8 @@
             android:layout_below="@id/rating_res"
             android:layout_marginStart="16dp"
             android:layout_marginTop="12dp"
-            android:layout_toRightOf="@id/img_res"
-            android:text="restaurant name"
+            android:layout_toEndOf="@id/img_res"
+            android:text="@string/restaurant_name"
             android:textColor="#000"
             android:textSize="18sp" />
 
@@ -51,7 +52,7 @@
             android:layout_alignBottom="@id/rating_res"
             android:layout_marginStart="4dp"
             android:layout_toEndOf="@id/rating_res"
-            android:text="(25)" />
+            android:text="@string/rate_number" />
 
 
         <LinearLayout
@@ -60,7 +61,8 @@
             android:layout_height="38dp"
             android:layout_below="@id/img_res"
             android:layout_marginTop="16dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:baselineAligned="false">
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -91,7 +93,7 @@
                     android:layout_gravity="end"
                     android:layout_weight="1"
                     android:gravity="end|center_vertical"
-                    android:text="EGP 0"
+                    android:text="@string/text_money"
                     android:textColor="#000"
                     android:textSize="@dimen/min_delivery_value_size"
                     android:textStyle="bold" />
@@ -112,7 +114,6 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="start"
                     android:layout_weight="1"
-
                     android:gravity="start|center_vertical"
                     android:text="@string/delivery_fee_txt"
                     android:textSize="@dimen/min_delivery_txt_size" />
@@ -124,7 +125,7 @@
                     android:layout_gravity="end"
                     android:layout_weight="1"
                     android:gravity="end|center_vertical"
-                    android:text="EGP 10.00"
+                    android:text="@string/text_money"
                     android:textColor="#000"
                     android:textSize="@dimen/min_delivery_value_size"
                     android:textStyle="bold" />
@@ -134,10 +135,11 @@
         </LinearLayout>
     </RelativeLayout>
 
-    <FrameLayout
-        android:id="@+id/frame_categories_info"
+    <android.support.v7.widget.RecyclerView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/allcategory_recycler"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@id/top_card_relative"
-         />
+        android:background="#fff" />
 </RelativeLayout>

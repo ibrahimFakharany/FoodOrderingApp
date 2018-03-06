@@ -7,7 +7,6 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:fontFamily">@font/abeezee_regular</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:homeAsUpIndicator"></item>
     </style>
     <style name="MyRatingBar" parent="@style/Widget.AppCompat.RatingBar.Small">
         <item name="android:progressDrawable">@drawable/star_rating_bar_full</item>

@@ -22,4 +22,26 @@
     <string name="add_to_basket">Add to Basket</string>
     <string name="info_icon">info</string>
     <string name="rating">Rating</string>
+    <string name="title_here">title here</string>
+    <string name="backdrop_cd">backdropimage</string>
+    <string name="img_minus_cd">image minus</string>
+    <string name="img_add_cd">image add</string>
+    <string name="cd_img_res">image restaurant</string>
+    <string name="cd_arrow_img">arrow image icon</string>
+    <string name="cd_img_meal">image meal</string>
+    <string name="cd_image_arrow_right">image arrow right</string>
+    <string name="sign_in_with_google_btn">sign in with google</string>
+    <string name="account_detail_fragment_text">account detail fragment</string>
+    <string name="email_here">email here</string>
+    <string name="meal_name">meal name</string>
+    <string name="meal_description_text">this is description</string>
+    <string name="price_text">Price</string>
+    <string name="one_number">1</string>
+    <string name="text_money">EGP 20</string>
+    <string name="rate_number">(25)</string>
+    <string name="category_name">category text</string>
+    <string name="date_text">22/12/2015</string>
+    <string name="reviewer_name">name</string>
+    <string name="review">review</string>
+    <string name="review_rate">4.3</string>
 </resources>

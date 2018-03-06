@@ -6,7 +6,7 @@ package exampls.com.foodorderingapp.Utils;
 
 public class Constants {
     public static final String MEALS_FRAGMENT_TAG = "meal_fragment";
-    public static final String RESTAURANT_FRAGMENT_TAG = "restaurant_fragment";
+    public static final String RESTAURANT_FRAGMENT_TAG = "fragment_restaurant";
     public static final String MEAL_ID = "meal_id";
     public static final String MEAL_FRAGMENT_TAG = "FRAMENT_MEAL_TAG";
     public static final String RESTAURANT_RATING = "RATING_FRAGMENT";

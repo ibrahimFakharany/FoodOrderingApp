@@ -9,9 +9,6 @@ import android.view.ViewGroup;
 
 import exampls.com.foodorderingapp.R;
 
-/**
- * Created by 450 G1 on 28/02/2018.
- */
 
 public class AccountDetailFragment extends Fragment {
 
